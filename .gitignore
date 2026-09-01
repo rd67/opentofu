@@ -1,0 +1,52 @@
+# OpenTofu
+# NOTE: .terraform.lock.hcl is intentionally NOT ignored - it pins exact
+# provider versions per folder and should be committed for reproducibility
+# (OpenTofu itself recommends this on every `tofu init`).
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Variable files that likely contain secrets (do_token, ssh_public_key,
+# db passwords, etc.) - only the *.tfvars.example templates are meant to
+# be committed.
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+
+# Plan output - can contain sensitive resource values in plaintext
+*.tfplan
+*.plan
+
+# Cloud credentials someone might drop in the repo directory for
+# convenience (e.g. a GCP service account key for
+# GOOGLE_APPLICATION_CREDENTIALS, an AWS/Azure credentials file, TLS certs)
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*credentials*.json
+service-account*.json
+*-key.json
+.env
+.env.*
+!.env.example
+
+# SSH keys, in case one is ever generated inside the repo instead of ~/.ssh
+id_rsa*
+id_ed25519*
+id_ecdsa*
+
+# OS / editor / local tooling
+.DS_Store
+.idea/
+.vscode/
+.claude/

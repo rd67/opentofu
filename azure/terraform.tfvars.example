@@ -1,0 +1,39 @@
+# Copy to terraform.tfvars and fill in your own values.
+#
+# cp terraform.tfvars.example terraform.tfvars
+
+project_name = "tofu-starter"
+environment  = "dev"
+location     = "eastus"
+
+# REQUIRED. Restrict SSH to your own IP, e.g. "203.0.113.10/32".
+# Do NOT use 0.0.0.0/0. Find your public IP with:
+#   curl -s https://ifconfig.me
+allowed_ssh_cidr = "203.0.113.10/32"
+
+# REQUIRED. Contents of your SSH public key, e.g.: cat ~/.ssh/id_ed25519.pub
+ssh_public_key = "ssh-ed25519 AAAA... you@example.com"
+
+admin_username = "azureuser"
+vm_size        = "Standard_B1s"
+
+db_admin_username = "appadmin"
+# REQUIRED, sensitive. Leave blank here and set via TF_VAR_db_admin_password
+# or an untracked terraform.tfvars - do not commit a real password.
+# Must be 8-128 chars and include 3 of: uppercase, lowercase, digit, symbol.
+db_admin_password = ""
+
+mysql_sku_name = "B_Standard_B1ms"
+
+redis_sku_name = "Basic"
+redis_family   = "C"
+redis_capacity = 0
+
+# Optional: custom environment variables passed through to each app's
+# systemd unit (merged on top of the fixed APP_PORT/MYSQL_*/REDIS_* ones
+# this module sets automatically). See ../apps/README.md#environment-variables.
+# node_env = {
+#   LOG_LEVEL = "debug"
+# }
+# python_env = {}
+# php_env    = {}

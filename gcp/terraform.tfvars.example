@@ -1,0 +1,43 @@
+# Copy this file to terraform.tfvars and fill in the values below.
+#   cp terraform.tfvars.example terraform.tfvars
+
+# --- Required, no default ----------------------------------------------------
+
+# Existing GCP project ID (must have billing enabled). This config does NOT
+# create the project itself, only enables the required APIs inside it.
+project_id = "my-gcp-project-id"
+
+# CIDR allowed to SSH (port 22) into the VMs. Set this to YOUR public IP with
+# a /32 suffix - do not leave this as 0.0.0.0/0. See the README for how to
+# find your public IP.
+allowed_ssh_cidr = "203.0.113.10/32"
+
+# Contents of your SSH public key (e.g. `cat ~/.ssh/id_ed25519.pub`).
+ssh_public_key = "ssh-ed25519 AAAA... you@example.com"
+
+# Password for the application MySQL user created in Cloud SQL. Pick
+# something long and random - it is marked sensitive and never printed in
+# outputs, but it IS stored in plaintext in the OpenTofu state file, as is
+# normal for Terraform/OpenTofu-managed passwords. Protect your state file
+# accordingly (e.g. a remote backend with encryption/access controls).
+db_password = ""
+
+# --- Optional - sensible defaults are set in variables.tf --------------------
+
+# project_name  = "tofu-starter"
+# environment   = "dev"
+# region        = "us-central1"
+# zone          = "us-central1-a"
+# ssh_username  = "tofu"
+# machine_type  = "e2-micro"
+# db_tier       = "db-f1-micro"
+# db_username   = "appuser"
+
+# Extra environment variables for each app (merged on top of the fixed
+# APP_PORT/MYSQL_*/REDIS_* ones this module sets automatically). See
+# ../apps/README.md#environment-variables.
+# node_env = {
+#   LOG_LEVEL = "debug"
+# }
+# python_env = {}
+# php_env    = {}

@@ -1,0 +1,37 @@
+# Copy this file to terraform.tfvars and fill in the values below:
+#   cp terraform.tfvars.example terraform.tfvars
+
+project_name = "tofu-starter"
+environment  = "dev"
+region       = "nyc3"
+
+# REQUIRED, sensitive - no default is provided. Create a token at
+# https://cloud.digitalocean.com/account/api/tokens. Leave blank here and
+# set it via the TF_VAR_do_token or DIGITALOCEAN_TOKEN environment variable
+# instead if you'd rather not put it in a file at all.
+do_token = ""
+
+# REQUIRED - no default is provided on purpose. Set this to YOUR OWN public
+# IP address in CIDR notation so SSH isn't open to the whole internet.
+# Find your public IP with: curl ifconfig.me
+# Example: allowed_ssh_cidr = "203.0.113.10/32"
+allowed_ssh_cidr = ""
+
+# REQUIRED - no default is provided. Paste the contents of your SSH public
+# key (e.g. `cat ~/.ssh/id_ed25519.pub`). Generate one with:
+# ssh-keygen -t ed25519
+ssh_public_key = ""
+
+droplet_size = "s-1vcpu-512mb-10gb"
+mysql_size   = "db-s-1vcpu-1gb"
+redis_size   = "db-s-1vcpu-1gb"
+db_username  = "appuser"
+
+# Optional - extra environment variables passed to each app (merged on top
+# of the fixed APP_PORT/MYSQL_*/REDIS_* ones this module sets automatically).
+# See ../apps/README.md#environment-variables.
+# node_env = {
+#   LOG_LEVEL = "debug"
+# }
+# python_env = {}
+# php_env    = {}
